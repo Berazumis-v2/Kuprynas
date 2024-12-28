@@ -1,9 +1,23 @@
+using Kuprynas.Data;
+using Kuprynas.Repositories;
+using Kuprynas.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<KuprynasDbContext>();
+builder.Services.AddScoped<IGroceryItemRepository, GroceryItemRepository>();
+builder.Services.AddScoped<IGroceryItemService, GroceryItemService>();
+
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<KuprynasDbContext>();
+    SeedData.Initialize(dbContext);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

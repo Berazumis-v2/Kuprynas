@@ -29,7 +29,8 @@ namespace Kuprynas.Models
         [Required]
         public bool Purchased { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
     }
 }

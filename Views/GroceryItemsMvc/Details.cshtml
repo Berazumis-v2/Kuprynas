@@ -1,0 +1,30 @@
+﻿@model Kuprynas.Models.GroceryItem
+
+@{
+    ViewData["Title"] = "Grocery Item Details";
+}
+
+<h1>@Model.Name</h1>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Category</dt>
+        <dd class="col-sm-10">@Model.Category</dd>
+
+        <dt class="col-sm-2">Quantity</dt>
+        <dd class="col-sm-10">@Model.Quantity</dd>
+
+        <dt class="col-sm-2">Unit</dt>
+        <dd class="col-sm-10">@Model.Unit</dd>
+
+        <dt class="col-sm-2">Price</dt>
+        <dd class="col-sm-10">@Model.Price</dd>
+
+        <dt class="col-sm-2">Purchased</dt>
+        <dd class="col-sm-10">@Model.Purchased</dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>
